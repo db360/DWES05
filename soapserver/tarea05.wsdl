@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<definitions
+  name="productosServ" 
+  targetNamespace="http://localhost/dwes05/tarea"
+  xmlns:dwes05="http://localhost/dwes05/tarea" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+  xmlns="http://schemas.xmlsoap.org/wsdl/"  
+  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+  xsi:schemaLocation='http://schemas.xmlsoap.org/wsdl/ http://schemas.xmlsoap.org/wsdl/'
+>
+<!--Tipos de datos propios de este servicio -->
+<types>
+    <xsd:schema targetNamespace="http://localhost/dwes05/tarea">
+        
+        <!-- Tipo con los datos de producto y opcionalmente el id -->
+        <xsd:complexType name="typeProducto">
+            <xsd:sequence>
+                <xsd:element name="id" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="cod" type="xsd:string"/>
+                <xsd:element name="desc" type="xsd:string"/>
+                <xsd:element name="precio" type="xsd:decimal"/>                         
+                <xsd:element name="stock" type="xsd:integer"/>                     
+            </xsd:sequence>
+        </xsd:complexType>
+
+        <!-- Lista de typeProducto -->
+        <xsd:complexType name="typeListaProductos"> 
+            <xsd:all>
+                <xsd:element name="productos" type="dwes05:typeProducto" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:all>
+        </xsd:complexType>
+
+        <!-- Tipo para la respuesta de una acción -->
+        <xsd:complexType name="typeResultadosAccion">
+            <xsd:all>
+                <xsd:element name="result" type="xsd:integer" />                
+                <xsd:element name="descResult" type="xsd:string"/>
+            </xsd:all>
+        </xsd:complexType>
+
+    </xsd:schema>    
+</types>
+
+<!-- Mensajes de este servicio -->
+<message name="resultadosAccion">
+    <part name="resultado" type="dwes05:typeResultadosAccion"/>
+</message>
+<message name="producto">
+    <part name="producto" type="dwes05:typeProducto"/>
+</message>
+<message name="datosModificarProducto">
+    <part name="codProducto" type="xsd:string" />
+    <part name="datosProducto" type="dwes05:typeProducto" />
+</message>
+<message name="datosIncStockProducto">
+    <part name="codProducto" type="xsd:string" />
+    <part name="incStock" type="xsd:integer" />
+</message>
+<message name="idProducto">
+    <part name="idProducto" type="xsd:int"/>
+</message>
+<message name="codProducto">
+    <part name="codProducto" type="xsd:string"/>
+</message>
+<message name="listaProductos">
+    <part name="listaProductos" type="dwes05:typeListaProductos" />
+</message>
+
+<!-- Definimos el conjunto de operaciones posibles -->
+<portType name="productosOPs">
+    <operation name="nuevoProducto">
+        <input message="dwes05:producto" />
+        <output message="dwes05:resultadosAccion" />
+    </operation>
+    <operation name="detalleProducto">
+        <input message="dwes05:codProducto" />
+        <output message="dwes05:producto" />
+    </operation>
+    <operation name="modificarProducto">
+        <input message="dwes05:datosModificarProducto" />
+        <output message="dwes05:resultadosAccion" />
+    </operation>
+    <operation name="incrementarStockProducto">
+        <input message="dwes05:datosIncStockProducto"/>
+        <output message="dwes05:resultadosAccion"/>
+    </operation>
+    <operation name="eliminarProducto">
+        <input message="dwes05:idProducto" />
+        <output message="dwes05:resultadosAccion" />
+    </operation>
+    <operation name="listarProductos">
+        <output message="dwes05:listaProductos"/>
+    </operation>
+</portType>
+
+<!--Enlazamos protocolo y formato con las operaciones -->
+<binding name="productosBinding" type="dwes05:productosOPs">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+     <operation name="nuevoProducto">
+        <soap:operation soapAction="http://localhost/dwes05/soapserver/index.php?nuevoProducto"/>
+        <input> 
+            <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/dwes05/tarea" />
+        </input>
+        <output>
+            <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/dwes05/tarea" />
+        </output>
+    </operation>
+    <operation name="detalleProducto">
+        <soap:operation soapAction="http://localhost/dwes05/soapserver/index.php?detalleProducto"/>
+        <input> 
+            <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/dwes05/tarea" />
+        </input>
+        <output>
+            <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/dwes05/tarea" />
+        </output>
+    </operation>
+    <operation name="modificarProducto">
+        <soap:operation soapAction="http://localhost/dwes05/soapserver/index.php?modificarProducto"/>
+        <input> 
+            <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/dwes05/tarea" />
+        </input>
+        <output>
+            <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/dwes05/tarea" />
+        </output>
+    </operation>
+     <operation name="incrementarStockProducto">
+        <soap:operation soapAction="http://localhost/dwes05/soapserver/index.php?incrementarStockProducto"/>
+        <input> 
+            <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/dwes05/tarea" />
+        </input>
+        <output>
+            <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/dwes05/tarea" />
+        </output>
+    </operation>
+    <operation name="eliminarProducto">
+        <soap:operation soapAction="http://localhost/dwes05/soapserver/index.php?eliminarProducto"/>
+        <input> 
+            <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/dwes05/tarea" />
+        </input>
+        <output>
+            <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/dwes05/tarea" />
+        </output>
+    </operation>
+    <operation name="listarProductos">
+        <soap:operation soapAction="http://localhost/dwes05/soapserver/index.php?listarProductos"/>
+        <input> 
+            <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/dwes05/tarea" />
+        </input>
+        <output>
+            <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/dwes05/tarea" />
+        </output>
+    </operation>        
+</binding>
+
+<!-- Definimos el servicio -->
+<service name="productosService">
+    <documentation>Servicio para gestión de productos y stock.</documentation>
+    <port name="productosService" binding="dwes05:productosBinding">
+        <soap:address location="http://localhost/dwes05/soapserver/index.php" />
+    </port>
+</service>        
+
+</definitions>

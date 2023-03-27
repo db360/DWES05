@@ -1,0 +1,186 @@
+html,
+body {
+  height: 100vh;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(45deg, #49a09d, #5f2c82) fixed;
+  font-family: sans-serif;
+  font-weight: 100;
+}
+.table-container {
+  margin: 3rem auto;
+  width: 50%;
+}
+.table-title {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
+table {
+  margin-top: 1rem;
+  font-size: large;
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+  padding: 15px 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+th {
+  text-align: left;
+}
+thead th {
+  background-color: #55608f;
+}
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+tbody td {
+  position: relative;
+}
+
+tbody td:hover::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -9999px;
+  bottom: -9999px;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: -1;
+}
+
+.id {
+  width: 7%;
+}
+.codigo {
+  width: 13%;
+}
+.descripcion {
+  width: 50%;
+}
+.precio {
+  width: 15%;
+  font-weight: bold;
+}
+.stock {
+  width: 10%;
+}
+.operaciones {
+  padding: 0 0;
+}
+
+/* BOTONES */
+
+.btn-container .btn,
+form .btn-nuevo {
+  border-radius: 999px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 0.2rem 0.7rem;
+  touch-action: manipulation;
+  word-break: break-word;
+  border: 0;
+  width: 100%;
+}
+
+.btn-container .btn-borrar {
+  background: #ff0000;
+  box-shadow: #ff0000 0 10px 20px -10px;
+  margin-bottom: 0.5rem;
+}
+.btn-container .btn-borrar:hover {
+  background: #c40000;
+}
+
+.btn-container .btn-editar,
+form .btn-editar {
+  background: #5c3b85;
+  box-shadow: #5c3b85 0 10px 20px -10px;
+}
+.btn-container .btn-editar:hover,
+form .btn-editar {
+  background: #3d2658;
+}
+
+.w20 {
+  width: 35% !important;
+}
+
+
+.btn-nuevo {
+  height: 40px;
+  border-radius: 999px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 20px !important;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 1rem 0.7rem;
+  touch-action: manipulation;
+  word-break: break-word;
+  border: 0;
+  background: #2d3c87;
+  box-shadow: #2d3c87 0 10px 20px -10px;
+  padding: 0.3rem 0.5rem !important;
+  margin-bottom: 1rem;
+}
+form .btn-nuevo:hover {
+  background: rgb(83, 46, 125);
+}
+
+
+.btn-editar, .btn-borrar {
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
+.btn-editar {
+  margin-bottom: 0.5rem;
+}
+
+form {
+  align-items: center;
+  margin: 10 15px;
+}
+table a {
+  padding: 0.1rem 0.5rem !important;
+  height: 30px;
+  margin: 0 auto;
+  display: flex;
+  width: 60% !important;
+}
+
+form .btn-form {
+  display: flex;
+  width: 100%;
+  place-content: center;
+}
+
+.red {
+  color: red;
+  text-transform: uppercase;
+}
+
+.btn-operaciones{
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
