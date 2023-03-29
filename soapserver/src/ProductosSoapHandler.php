@@ -24,7 +24,7 @@ class ProductosSoapHandler {
      * @param int $stock
      * @return int id del nuevo producto insertado
      */
-    public function nuevoProducto($cod, $descripcion, $precio, $stock) {
+    public function nuevoProducto($id=null, $cod, $descripcion, $precio, $stock) {
         try {
             $stmt = $this->pdo->prepare("INSERT INTO productos (cod, `desc`, precio, stock ) VALUES (?, ?, ?, ?)");
             $stmt->execute([$cod, $descripcion, $precio, $stock]);

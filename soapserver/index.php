@@ -13,8 +13,10 @@ require_once(__DIR__.'/src/ProductosSoapHandler.php');
 // }
 
 // if(!file_exists(WSDL_FILE)) {
-$server = new SoapServer('http://localhost/dwes05/soapserver/index.php?WSDL', array('uri'=>''));
+$server = new SoapServer(SOAP_URL);
 $server->setClass('ProductosSoapHandler');
 $server->handle();
+_l("DATOS GENERADOS - ".PHP_EOL.htmlentities(ob_get_contents()));
+ob_end_flush();
 var_dump($server);
 // }

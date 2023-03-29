@@ -1,4 +1,7 @@
 <?php
+require_once(__DIR__.'/../soapserver/conf/conf.php');
+
+
 if (isset($_POST['submit'])) {
     var_dump($_POST);
     $cod = $_POST['cod'];
@@ -6,13 +9,22 @@ if (isset($_POST['submit'])) {
     $precio = floatval($_POST['precio']);
     $stock = intval($_POST['stock']);
 
-    $client = new SoapClient('http://localhost/dwes05/soapserver/tarea05.wsdl.?WSDL');
-    $parametros = array('cod' => $cod, 'desc' => $desc, 'precio' => $precio, 'stock' => $stock);
-    $resultado = $client->nuevoProducto($parametros);
+    try {
+
+            $client = new SoapClient(SOAP_URL, array('trace' => true));
+            $parametros = array('id'=>null,'cod' => $cod, 'desc' => $desc, 'precio' => $precio, 'stock' => $stock);
+            $resultado = $client->nuevoProducto($parametros);
+            $resultado2 = $client->detalleProducto($cod);
+        //code...
+    } catch (\SoapFault $e) {
+        //throw $th;
+        echo $e;
+    }
     var_dump($client);
     // var_dump();
 
     var_dump($resultado);
+    var_dump($resultado2);
     // if ($resultado->result===) {
 
     // }

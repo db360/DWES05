@@ -9,5 +9,6 @@ define ('DB_PASSWD','');
 $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https' : 'http';
 $baseUrl = $protocol . "://" . $_SERVER['SERVER_NAME'] . "/dwes05";
 
-define('WSDL_FILE', __DIR__ . '/../tarea05.wsdl');
+define('WSDL_FILE', __DIR__ . '/../tarea05.wsdl.xml');
 define('BASE_URL', $baseUrl);
+define('SOAP_URL', 'http://localhost/dwes05/soapserver/tarea05.wsdl');
