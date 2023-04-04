@@ -17,13 +17,17 @@ require_once(__DIR__ . '/../soapserver/conf/conf.php');
 //     echo "</pre>";
 
         try {
+            // Creamos el cliente con la url a el archivo wsdl del servidor.
             $client = new SoapClient(SOAP_URL);
-            $resultado = $client->__getFunctions();
+
+            // $resultado = $client->__getFunctions();
             // $resultado = $client->nuevoProducto('A282', 'Hola', 51, 5);
+
+            // llamamos el método listarProducto a través del cliente Soap
             $resultado2 = $client->listarProductos();
-            var_dump($client);
-            var_dump($resultado);
+            // var_dump($client);
             var_dump($resultado2);
+            // var_dump($resultado2);
         } catch (\SoapFault $e) {
             // var_dump($e);
             print $e->faultstring;

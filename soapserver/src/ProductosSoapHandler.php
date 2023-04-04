@@ -75,8 +75,25 @@ class ProductosSoapHandler {
      */
     public function listarProductos() {
         try {
-            $resultado = Producto::listar($this->pdo, 10, 0);
-            return $resultado;
+            
+            $listaProductos = Producto::listar($this->pdo, 10, 0);
+            return $listaProductos;
+
+            // $productos = array();
+            // foreach ($listaProductos as $producto) {
+            //     $typeProducto = new \stdClass();
+            //     $typeProducto->id = $producto->getId();
+            //     $typeProducto->cod = $producto->getCod();
+            //     $typeProducto->desc = $producto->getDesc();
+            //     $typeProducto->precio = $producto->getPrecio();
+            //     $typeProducto->stock = $producto->getStock();
+            //     $productos[] = $typeProducto;
+            // }
+
+            // $typeListaProductos = new \stdClass();
+            // $typeListaProductos->productos = $productos;
+
+            // return $typeListaProductos;
 
         } catch ( Error $e) {
             // Error
