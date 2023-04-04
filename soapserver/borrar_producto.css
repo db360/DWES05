@@ -1,0 +1,28 @@
+form {
+    width: 70% !important;
+}
+.campo-borrar {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    align-items: center;
+}
+.mt-4 {
+    margin-top: 4rem;
+}
+.campo-borrar h4 {
+    width: 25%;
+}
+.campo-borrar a {
+    width: 50%;
+}
+.btn-borrar {
+    background-color: rgb(236, 96, 96);
+    width: 50% !important   ;
+}
+
+
+form label input {
+    margin-top: 2rem;
+    margin-right: 1rem;
+}

@@ -1,53 +1,58 @@
 <?php
+use classes\Producto;
+
 require_once(__DIR__.'/conn.php');
+require_once(__DIR__.'/model/Producto.php');
+
 /**
  * [Description ProductosSoapHandler]
  * Actividad Tema 5: DWES
  * @author David Martínez de la Torre
- * Documentación para la generación automática de documento WSDL
+ *
  */
 class ProductosSoapHandler {
 
     private $pdo;
     /**
-     * Constructor(establecer conexión con la base de datos y guardar la conexion)
+     * Constructor para establecer conexión con la base de datos y guardar la conexion.
      */
     public function __construct() {
         $this->pdo = connect();
     }
+
     /**
-     * Método para agregar un nuevo producto a la base de datos.
-     *
      * @param string $cod
-     * @param string $descripcion
+     * @param string $desc
      * @param float $precio
      * @param int $stock
-     * @return int id del nuevo producto insertado
+     *
+     * @return [int|boolean]
      */
-    public function nuevoProducto($id=null, $cod, $descripcion, $precio, $stock) {
+    public function nuevoProducto($cod, $desc, $precio, $stock) {
+
         try {
-            $stmt = $this->pdo->prepare("INSERT INTO productos (cod, `desc`, precio, stock ) VALUES (?, ?, ?, ?)");
-            $stmt->execute([$cod, $descripcion, $precio, $stock]);
-            return $this->pdo->lastInsertId();
+            $producto = new Producto($cod, $desc, $precio, $stock);
+            $resultado = $producto->guardar($this->pdo);
+            return $resultado;
         } catch (\SoapFault $e) {
             // Error
-            die("Error: " . $e->getMessage());
+            throw new \SoapFault("Error Creando Producto: ",  $e->getMessage());
+
         }
     }
     /**
      * @param int $codProducto
      *
-     * @return [array]
+     * @return [object|null]
      */
     public function detalleProducto($codProducto) {
         try {
-            $stmt = $this->pdo->prepare("SELECT * FROM productos WHERE id = ?");
-            $stmt->execute([$codProducto]);
-            $producto = $stmt->fetch(PDO::FETCH_OBJ);
-            return $producto;
+            $resultado = Producto::rescatar($this->pdo, $codProducto);
+            return $resultado;
+
         } catch (\SoapFault $e) {
             // Error
-            die("Error: " . $e->getMessage());
+            throw new \SoapFault("Error Detalle Producto: ",  $e->getMessage());
         }
     }
     /**
@@ -57,13 +62,12 @@ class ProductosSoapHandler {
      */
     public function eliminarProducto($idProducto) {
         try {
-            $stmt = $this->pdo->prepare("DELETE * FROM productos WHERE id = ?");
-            $stmt->execute([$idProducto]);
-            $resultadosAccion =  $stmt->rowCount();
-            return $resultadosAccion;
+            $resultado = Producto::borrar($this->pdo, $idProducto);
+            return $resultado;
         } catch (\SoapFault $e) {
             // Error
-            die("Error: " . $e->getMessage());
+            throw new \SoapFault("Error Eliminando Producto: ",  $e->getMessage());
+
         }
     }
     /**
@@ -71,14 +75,14 @@ class ProductosSoapHandler {
      */
     public function listarProductos() {
         try {
-            $stmt = $this->pdo->prepare("SELECT * FROM productos");
-            return $stmt->fetchAll(PDO::FETCH_OBJ);
-        } catch (\SoapFault $e) {
+            $resultado = Producto::listar($this->pdo, 10, 0);
+            return $resultado;
+
+        } catch ( Error $e) {
             // Error
-            die("Error: " . $e->getMessage());
+            throw new Error ("Error Listando Producto: ",  $e->getMessage());
         }
     }
 }
-
 
 ?>
