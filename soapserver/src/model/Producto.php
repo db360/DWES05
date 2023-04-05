@@ -26,7 +26,7 @@ class Producto implements IListable, IGuardable {
     //  * @param string $desc
     //  * @param float $precio
     //  * @param int $stock
-    //  * @param mixed $id
+    //  * @param int $id
     //  */
     public function __construct($cod, $desc, $precio, $stock, $id = null) {
         $this->cod = $cod;
@@ -45,7 +45,7 @@ class Producto implements IListable, IGuardable {
      * @return [float]
      */
     public function getPrecio() {
-        return $this->precio;
+        return floatval($this->precio);
     }
     /**
      * @return [string]
@@ -60,7 +60,7 @@ class Producto implements IListable, IGuardable {
         return $this->cod;
     }
     /**
-     * @return [float]
+     * @return [string]
      */
     public function getStock () {
         return $this->stock;
@@ -69,6 +69,11 @@ class Producto implements IListable, IGuardable {
      * @param mixed $precio
      *
      * @return [float]
+     */
+    /**
+     * @param float $precio
+     *
+     * @return [float|boolean]
      */
     public function setPrecio($precio) {
         if(is_numeric($precio) && $precio > 0) {
@@ -80,9 +85,9 @@ class Producto implements IListable, IGuardable {
         return $retorno;
     }
     /**
-     * @param mixed $stock
+     * @param int $stock
      *
-     * @return [int]
+     * @return [int|boolean]
      */
     public function setStock($stock) {
         if(is_numeric($stock) && $stock > 0) {
@@ -94,9 +99,9 @@ class Producto implements IListable, IGuardable {
         return $retorno;
     }
     /**
-     * @param mixed $cod
+     * @param string $cod
      *
-     * @return [string]
+     * @return [string|boolean]
      */
     public function setCod($cod) {
         if (preg_match('/^[a-zA-Z0-9]+$/', $cod)) {
@@ -192,7 +197,7 @@ class Producto implements IListable, IGuardable {
      * @param int $lim
      * @param int $offset
      *
-     * @return [array|boolean]
+     * @return [array]
      */
     public static function listar($pdo, $lim, $offset) {
 
