@@ -1,0 +1,32 @@
+form {
+    display: flex !important;
+    flex-direction: column;
+}
+
+.texto-modificar {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.campo-resultado {
+    width: 80% !important;
+}
+
+.campo-resultado ul {
+    list-style-type: none;
+}
+.campo-resultado ul li {
+    margin-bottom: 1rem;
+    font-size: large;
+}
+.campo-resultado ul li span {
+    font-weight: bold;
+}
+
+.titulo-producto {
+    margin-bottom: 3rem;
+}
+
+.lista-producto span {
+
+}

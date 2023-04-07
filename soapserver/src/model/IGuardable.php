@@ -3,7 +3,6 @@ namespace interfaces;
 
 require_once(__DIR__ . '/../conn.php');
 
-$pdo = connect();
 
  interface IGuardable {
 

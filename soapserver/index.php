@@ -9,7 +9,7 @@ require_once(__DIR__.'/src/ProductosSoapHandler.php');
         $server->setClass('ProductosSoapHandler');
         ob_clean();
         $server->handle();
-        _l("DATOS GENERADOS - ".PHP_EOL.htmlentities(ob_get_contents()));
+        _l("Index.php - ".PHP_EOL.htmlentities(ob_get_contents()));
         ob_end_flush();
     } catch (SoapFault $e) {
         //catch error

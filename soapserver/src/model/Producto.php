@@ -29,6 +29,7 @@ class Producto implements IListable, IGuardable {
     //  * @param int $id
     //  */
     public function __construct($cod, $desc, $precio, $stock, $id = null) {
+
         $this->cod = $cod;
         $this->desc = $desc;
         $this->precio = $precio;
@@ -113,7 +114,7 @@ class Producto implements IListable, IGuardable {
         return $retorno;
     }
     /**
-     * @param mixed $desc
+     * @param string $desc
      *
      * @return [string]
      */
@@ -133,26 +134,17 @@ class Producto implements IListable, IGuardable {
      */
     public function guardar($pdo) {
         try {
-            $sql = "SELECT id FROM productos WHERE id = ?";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([$this->id]);
-            $row = $stmt->fetch(\PDO::FETCH_ASSOC);
 
-            if ($row) {
-                $sql = "UPDATE productos SET cod = ?, `desc` = ?, precio = ?, stock = ? WHERE id = ?";
-                $stmt = $pdo->prepare($sql);
-                $stmt->execute([$this->cod, $this->desc, $this->precio, $this->stock, $this->id]);
-            } else {
                 $sql = "INSERT INTO productos (cod, `desc`, precio, stock) VALUES (?, ?, ?, ?)";
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute([$this->cod, $this->desc, $this->precio, $this->stock]);
                 $this->id = $pdo->lastInsertId();
-            }
 
-            return $stmt->rowCount();
+                return 1;
 
         } catch (\PDOException $e) {
-            return false;
+            $retorno = $e->getMessage();
+            return $retorno;
         }
     }
     /**
@@ -161,19 +153,20 @@ class Producto implements IListable, IGuardable {
      *
      * @return [array]
      */
-    public static function rescatar($pdo, $id) {
+    public static function rescatar($pdo, $cod) {
         try {
-            $stmt = $pdo->prepare("SELECT * FROM productos WHERE id = ?");
-            $stmt->execute([$id]);
+            $stmt = $pdo->prepare("SELECT * FROM productos WHERE cod = ?");
+            $stmt->execute([$cod]);
             $producto = $stmt->fetch();
             if($producto) {
                 return new Producto( $producto['cod'], $producto['desc'], floatval($producto['precio']), intval($producto['stock']) , intval($producto['id']));
             } else {
-                return null;
+                return false;
             }
 
         } catch (\PDOException $e) {
-            return false;
+            $retorno = $e->getMessage();
+            return $retorno;
         }
     }
     /**

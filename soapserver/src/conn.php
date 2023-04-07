@@ -15,7 +15,8 @@ function connect()
         return $pdo;
 
     } catch (PDOException $e) {
-        die("Conexión fallida: " . $e->getMessage());
+        throw new PDOException('Error de conexión a la base de datos: ' . $e->getMessage());
+        // return $resultado->faultstring = "Error en la conexión" . $e;
 
     } finally {
         $pdo = null;
