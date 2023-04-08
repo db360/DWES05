@@ -1,5 +1,5 @@
 <?php
-ob_start();
+// ob_start();
 require_once(__DIR__ . '/logger.php');
 require_once(__DIR__.'/conf/conf.php');
 require_once(__DIR__.'/src/ProductosSoapHandler.php');

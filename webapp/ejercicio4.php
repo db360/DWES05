@@ -2,6 +2,7 @@
 require_once(__DIR__ . '/../soapserver/conf/conf.php');
 
 $error[] = null;
+$success = false;
 
 if (isset($_POST['submit'])) {
 
@@ -28,22 +29,28 @@ if (isset($_POST['submit'])) {
         // var_dump($producto);
         // llamamos el método nuevoProducto a través del cliente Soap
 
-        $nuevoProducto = new stdClass();
-        
         $nuevoProducto = $client->nuevoProducto($producto);
 
-        if (isset($nuevoProducto->faultstring)) {
-            var_dump($nuevoProducto->faultstring);
+        if (isset($nuevoProducto->result) && $nuevoProducto->result > 1) {
+            $success = true;
         }
-        if (isset($nuevoProducto->error)) {
-            var_dump($nuevoProducto->error);
+
+        if (isset($nuevoProducto->result) && $nuevoProducto->result < 0) {
+            $error[] = $nuevoProducto->descResult;
         }
+
+
         echo "<pre>";
         var_dump($producto);
         echo "</pre>";
+
+        echo "<pre>";
+        var_dump($nuevoProducto);
+        echo "</pre>";
         // print_r($nuevoProducto->result);
         // print_r($nuevoProducto->result);
-        print_r($nuevoProducto->descResult);
+        echo "<br>";
+        // print_r($nuevoProducto->descResult);
         // print_r($nuevoProducto->faultstring);
         // var_dump($descResult);
 

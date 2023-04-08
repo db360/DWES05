@@ -1,43 +1,57 @@
 <?php
 
-$error[] = null;
+$error = null;
 $success = false;
 
-if (isset($_POST['submit']) && isset($_POST['cod'])) {
+$wsdl = 'http://localhost/dwes05/soapserver/tarea05.wsdl';
+$client = new SoapClient($wsdl);
 
+if (isset($_POST['submit']) && isset($_POST['codProducto'])) {
 
-    $wsdl = 'http://localhost/dwes05/soapserver/tarea05.wsdl';
-    $client = new SoapClient($wsdl);
-
-    $cod = trim(filter_input(INPUT_POST, 'cod', FILTER_SANITIZE_STRING));
+    $cod = trim(filter_input(INPUT_POST, 'codProducto', FILTER_SANITIZE_STRING));
 
     var_dump($_POST);
+    var_dump($cod);
 
     try {
         $resultado = $client->detalleProducto($cod);
-        $resultado->precio = floatval($resultado->precio);
-        $success = true;
+        // $resultado->precio = floatval($resultado->precio);
+        var_dump($resultado);
 
 
     } catch (\SoapFault $e) {
-        $error[0] = ("Hubo un error: " . $e->getMessage());
+        $error = ("Error: " . $e->getMessage());
+        var_dump($resultado);
     }
 }
 
-if (isset($resultado) && isset($resultado->result) && $resultado->result < 0) {
-    $error[0] = "Hubo un error: " . $resultado->descResult;
-}
-if (isset($resultado) && isset($resultado->result) && $resultado->result === 1) {
-    echo $resultado->descResult;
+
+if (isset($resultado) && $resultado->id > 0) {
+    $success = true;
 }
 
-if (isset($error[0])) {
-    echo "ERROR: " . $error[0];
+if (isset($resultado) && $resultado->id === -1) {
+    $error = "Error: El código de producto no existe en la base de datos";
 }
+
+if (isset($resultado) && $resultado->id === -2) {
+    $error = "Error: Hubo un error en la base de datos";
+}
+if (isset($resultado) && $resultado->id === -3) {
+    $error = "El campo código no puede estar vacío";
+}
+
+
+
+
+
+
 
 var_dump($error);
 var_dump($success);
 var_dump($resultado);
+// var_dump($resultado->result);
+// var_dump($resultado->descResult);
 
 ?>
 
@@ -55,30 +69,62 @@ var_dump($resultado);
 </head>
 
 <body>
-    <div class="container  {if $errorguardar != '' ||  $success != ''}transparent{/if}">
-        <?php if ($success === true && isset($resultado)) { ?>
+
+    <div class="container">
+        <?php if (isset($error[0])) { ?>
             <div class="campo campo-resultado">
-                <h3 class="titulo-producto">Producto: </h3>
-                <ul class="lista-producto">
-                    <li>Código:  <span><?=$resultado->cod ?></span></li>
-                    <li>ID:  <span><?=$resultado->id ?></span></li>
-                    <li>Descripción:  <span><?=$resultado->desc ?></span></li>
-                    <li>Precio:  <span><?=$resultado->precio ?></span></li>
-                    <li>Stock:  <span><?=$resultado->stock ?></span> </li>
-                </ul>
+                <h3 class="titulo-producto error">
+                    <?= $error ?>
+                </h3>
+                <div class="campo volver">
+                    <button type="submit" value="submit" class="btn btn-nuevo w20" name="submit"><a class="enlace"
+                            href="ejercicio5.php">Volver</a> </button>
+                </div>
             </div>
         <?php } else { ?>
-            <form action="ejercicio5.php" method="POST">
-                <div class="campo">
-                    <h3 class="texto-modificar">Inserte el código del producto</h3>
+
+
+            <?php if ($success === true && isset($resultado)) { ?>
+                <div class="campo campo-resultado">
+                    <h3 class="titulo-producto">Detalles del Producto
+                        <?= $resultado->cod ?>:
+                    </h3>
+                    <ul class="lista-producto">
+                        <li>Código: <span>
+                                <?= $resultado->cod ?>
+                            </span></li>
+                        <li>ID: <span>
+                                <?= $resultado->id ?>
+                            </span></li>
+                        <li>Descripción: <span>
+                                <?= $resultado->desc ?>
+                            </span></li>
+                        <li>Precio: <span>
+                                <?= $resultado->precio ?>
+                            </span></li>
+                        <li>Stock: <span>
+                                <?= $resultado->stock ?>
+                            </span> </li>
+                    </ul>
+                    <div class="campo volver">
+                        <button type="submit" value="submit" class="btn btn-nuevo w20" name="submit"><a class="enlace"
+                                href="ejercicio5.php">Volver</a> </button>
+                    </div>
                 </div>
-                <div class="campo">
-                    <input type="text" name="cod" id="">
-                    <input type="hidden" name="id" value="">
-                    <input type="hidden" name="operacion" value="modificar">
-                </div>
-                <button type="submit" value="submit" name="submit" class="btn btn-nuevo btn-modificar">Modificar</button>
-            </form>
+            <?php } else { ?>
+                <form action="ejercicio5.php" method="POST">
+                    <div class="campo">
+                        <h3 class="texto-modificar">Inserte el código del producto</h3>
+                    </div>
+                    <div class="campo">
+                        <input type="text" name="codProducto" id="codProducto">
+                        <input type="hidden" name="id" value="">
+                        <input type="hidden" name="operacion" value="modificar">
+                    </div>
+                    <button type="submit" value="submit" name="submit" class="btn btn-nuevo btn-modificar">Modificar</button>
+                </form>
+
+            <?php } ?>
 
         <?php } ?>
     </div>

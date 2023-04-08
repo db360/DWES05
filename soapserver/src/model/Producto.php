@@ -154,19 +154,33 @@ class Producto implements IListable, IGuardable {
      * @return [array]
      */
     public static function rescatar($pdo, $cod) {
+
         try {
+
             $stmt = $pdo->prepare("SELECT * FROM productos WHERE cod = ?");
             $stmt->execute([$cod]);
-            $producto = $stmt->fetch();
+            $producto = $stmt->fetch(\PDO::FETCH_ASSOC);
+
             if($producto) {
-                return new Producto( $producto['cod'], $producto['desc'], floatval($producto['precio']), intval($producto['stock']) , intval($producto['id']));
+
+                $resultado = new \stdClass();
+                $resultado->cod = $producto['cod'];
+                $resultado->desc = $producto['desc'];
+                $resultado->precio = floatval($producto['precio']);
+                $resultado->stock = intval($producto['stock']);
+                $resultado->id = intval($producto['id']);
+
+                return $resultado;
+
             } else {
-                return false;
+
+                return -1;
+                
             }
 
         } catch (\PDOException $e) {
-            $retorno = $e->getMessage();
-            return $retorno;
+
+            return -2;
         }
     }
     /**

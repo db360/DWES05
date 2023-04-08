@@ -1,5 +1,4 @@
 <?php
-
 use classes\Producto;
 
 require_once(__DIR__ . '/../logger.php');
@@ -45,26 +44,22 @@ class ProductosSoapHandler
         if (!is_string($cod)) {
             $resultado->descResult = 'El codigo debe ser un string';
             $resultado->result = -2;
-            $resultado->error = true;
             return $resultado;
         }
         if (!is_string($desc)) {
             $resultado->descResult = 'El codigo debe ser un string';
             $resultado->result = -2;
-            $resultado->error = true;
             return $resultado;
         }
         if (!is_float($precio) || $precio <= 0) {
             $resultado->descResult = 'El precio debe ser un número mayor a 0';
             $resultado->result = -2;
-            $resultado->error = true;
             return $resultado;
         }
 
         if (!is_int($stock) || $stock <= 0) {
             $resultado->result = -2;
             $resultado->descResult = 'El stock debe se un numero entero mayor a 0';
-            $resultado->error = true;
             return $resultado;
         }
 
@@ -82,80 +77,104 @@ class ProductosSoapHandler
 
         } catch (\PDOException $r) {
             $resultado = new stdClass();
+            $resultado->result = -1;
             $resultado->descResult = "Error en la base de datos: " . $r->getMessage();
+            return $resultado;
         }
 
         switch ($guardar) {
             case 1:
                 $resultado->result = 1;
                 $resultado->descResult = 'El Producto ha sido correctamente añadido';
-
                 break;
+
             default:
                 $resultado->result = -1;
                 $resultado->descResult = 'Error creando el producto: ' . $guardar;
                 $resultado->error = true;
-
                 break;
         }
 
         return $resultado;
     }
     /**
-     * @param int $codProducto
+     * @param string $codProducto
      *
-     * @return [object|null]
+     * @return [object]
      */
     public function detalleProducto($codProducto)
     {
-        if (!is_string($codProducto) || !isset($codProducto) || empty($codProducto))  {
-
             $resultado = new stdClass();
-            $resultado->descResult = "Error: El código debe contener carácteres";
-            $resultado->result = -2;
-            return $resultado;
 
-        } else {
 
             try {
-                $resultado = Producto::rescatar($this->pdo, $codProducto);
                 //code...
+                if($codProducto === '') {
+
+                    $resultado->id = -3;
+                    $resultado->cod = 0;
+                    $resultado->desc = 0;
+                    $resultado->precio = 0;
+                    $resultado->stock = 0;
+
+                    return $resultado;
+
+                } else {
+                    $producto = Producto::rescatar($this->pdo, $codProducto);
+                }
+
             } catch (\SoapFault $e) {
-                $resultado = new stdClass();
-                $resultado->descResult = "Error rescatando Producto: " . $e->getMessage();
-                $resultado->result = -2;
+
+                $resultado->id = -2;
+                $resultado->cod = 0;
+                $resultado->desc = 0;
+                $resultado->precio = 0;
+                $resultado->stock = 0;
+
                 return $resultado;
 
-            } catch (\PDOException $r) {
-                $resultado = new stdClass();
-                $resultado->descResult = "Error en la base de datos: " . $r->getMessage();
-                $resultado->result = -2;
-                return $resultado;
             }
-        }
 
-        if ($resultado !== false) {
+            if(is_object($producto)) {
 
-            $producto = new stdClass();
+                $resultado->id = intval($producto->id);
+                $resultado->cod = $producto->cod;
+                $resultado->desc = $producto->desc;
+                $resultado->precio = floatval($producto->precio);
+                $resultado->stock = intval($producto->stock);
+                // $resultado->result = 1;
+                // $resultado->descResult = "Producto correctamente rescatado";
 
-            $producto->id = $resultado->getId();
-            $producto->cod = $resultado->getCod();
-            $producto->desc = $resultado->getDesc();
-            $producto->precio = doubleval($resultado->getPrecio());
-            $producto->stock = $resultado->getCod();
+                return $resultado;
 
-            $producto->result = 1;
-            $producto->descResult = 'Producto correctamente rescatado';
-            return $producto;
+            }
 
-        } else {
-            $error = new stdClass();
-            $error->result = -1;
-            $error->descResult = 'No existe ningún producto con ese código';
-            return $error;
-        }
+            if($producto === -1) {
+
+                $resultado->id = -1;
+                $resultado->cod = 0;
+                $resultado->desc = 0;
+                $resultado->precio = 0;
+                $resultado->stock = 0;
+
+                return $resultado;
+
+            }
+
+            if($producto === -2) {
+
+                $resultado->id = -2;
+                $resultado->cod = 0;
+                $resultado->desc = 0;
+                $resultado->precio = 0;
+                $resultado->stock = 0;
+
+                return $resultado;
+
+            }
 
     }
+
     /**
      * @param int $idProducto
      *
@@ -177,6 +196,7 @@ class ProductosSoapHandler
     public function listarProductos()
     {
         try {
+
             $listaProductos = Producto::listar($this->pdo, 5, 0);
 
             if (isset($listaProductos)) {
@@ -186,15 +206,13 @@ class ProductosSoapHandler
 
                 foreach ($listaProductos as $producto) {
 
-                    $typeProducto = new Producto(
+                    $typeProducto = new stdClass();
 
-                        $producto->getCod(),
-                        $producto->getDesc(),
-                        floatval($producto->getPrecio()),
-                        $producto->getStock(),
-                        $producto->getId()
-
-                    );
+                    $typeProducto->cod = $producto->cod;
+                    $typeProducto->desc = $producto->desc;
+                    $typeProducto->precio = $producto->precio;
+                    $typeProducto->stock = $producto->stock;
+                    $typeProducto->id = $producto->id;
 
                     $typeListaProductos->productos[] = $typeProducto;
                 }
