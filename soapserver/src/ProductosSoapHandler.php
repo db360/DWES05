@@ -23,7 +23,10 @@ class ProductosSoapHandler
             $this->pdo = connect();
             //code...
         } catch (\PDOException $e) {
-            throw new \PDOException($e->getMessage());
+
+            $this->pdo = null;
+            
+            return;
         }
 
     }
@@ -66,7 +69,16 @@ class ProductosSoapHandler
         try {
             $productoGuardar = new Producto($cod, $desc, $precio, $stock);
 
-            $guardar = $productoGuardar->guardar($this->pdo);
+            if(isset($pdo) || $pdo === null) {
+
+                $resultado->result = -2;
+                $resultado->descResult = "Base de datos no disponible";
+                return $resultado;
+
+            } else {
+                $guardar = $productoGuardar->guardar($this->pdo);
+
+            }
 
         } catch (\SoapFault $e) {
             // Error
@@ -77,7 +89,7 @@ class ProductosSoapHandler
 
         } catch (\PDOException $r) {
             $resultado = new stdClass();
-            $resultado->result = -1;
+            $resultado->result = -2;
             $resultado->descResult = "Error en la base de datos: " . $r->getMessage();
             return $resultado;
         }
@@ -88,10 +100,14 @@ class ProductosSoapHandler
                 $resultado->descResult = 'El Producto ha sido correctamente añadido';
                 break;
 
+            case -1:
+                $resultado->result = -2;
+                $resultado->descResult = 'Error con la base de datos';
+                break;
+
             default:
                 $resultado->result = -1;
-                $resultado->descResult = 'Error creando el producto: ' . $guardar;
-                $resultado->error = true;
+                $resultado->descResult = 'Error creando el producto';
                 break;
         }
 
@@ -106,12 +122,63 @@ class ProductosSoapHandler
     {
             $resultado = new stdClass();
 
+            if(!isset($this->pdo) || $this->pdo === null) {
 
-            try {
-                //code...
-                if($codProducto === '') {
+                $resultado->id = -2;
+                $resultado->cod = 0;
+                $resultado->desc = 0;
+                $resultado->precio = 0;
+                $resultado->stock = 0;
 
-                    $resultado->id = -3;
+                return $resultado;
+            } else {
+                try {
+                    //code...
+                    if($codProducto === '') {
+
+                        $resultado->id = -3;
+                        $resultado->cod = 0;
+                        $resultado->desc = 0;
+                        $resultado->precio = 0;
+                        $resultado->stock = 0;
+
+                        return $resultado;
+
+                    } else {
+
+                        $producto = Producto::rescatar($this->pdo, $codProducto);
+
+                    }
+
+                } catch (\SoapFault $e) {
+
+                    $resultado->id = -2;
+                    $resultado->cod = 0;
+                    $resultado->desc = 0;
+                    $resultado->precio = 0;
+                    $resultado->stock = 2;
+
+                    return $resultado;
+
+                }
+
+                if(is_object($producto)) {
+
+                    $resultado->id = intval($producto->id);
+                    $resultado->cod = $producto->cod;
+                    $resultado->desc = $producto->desc;
+                    $resultado->precio = floatval($producto->precio);
+                    $resultado->stock = intval($producto->stock);
+                    // $resultado->result = 1;
+                    // $resultado->descResult = "Producto correctamente rescatado";
+
+                    return $resultado;
+
+                }
+
+                if($producto === -1) {
+
+                    $resultado->id = -1;
                     $resultado->cod = 0;
                     $resultado->desc = 0;
                     $resultado->precio = 0;
@@ -119,59 +186,23 @@ class ProductosSoapHandler
 
                     return $resultado;
 
-                } else {
-                    $producto = Producto::rescatar($this->pdo, $codProducto);
                 }
 
-            } catch (\SoapFault $e) {
+                if($producto === -2) {
 
-                $resultado->id = -2;
-                $resultado->cod = 0;
-                $resultado->desc = 0;
-                $resultado->precio = 0;
-                $resultado->stock = 0;
+                    $resultado->id = -2;
+                    $resultado->cod = 0;
+                    $resultado->desc = 0;
+                    $resultado->precio = 0;
+                    $resultado->stock = 1;
 
-                return $resultado;
+                    return $resultado;
 
+                }
             }
 
-            if(is_object($producto)) {
 
-                $resultado->id = intval($producto->id);
-                $resultado->cod = $producto->cod;
-                $resultado->desc = $producto->desc;
-                $resultado->precio = floatval($producto->precio);
-                $resultado->stock = intval($producto->stock);
-                // $resultado->result = 1;
-                // $resultado->descResult = "Producto correctamente rescatado";
 
-                return $resultado;
-
-            }
-
-            if($producto === -1) {
-
-                $resultado->id = -1;
-                $resultado->cod = 0;
-                $resultado->desc = 0;
-                $resultado->precio = 0;
-                $resultado->stock = 0;
-
-                return $resultado;
-
-            }
-
-            if($producto === -2) {
-
-                $resultado->id = -2;
-                $resultado->cod = 0;
-                $resultado->desc = 0;
-                $resultado->precio = 0;
-                $resultado->stock = 0;
-
-                return $resultado;
-
-            }
 
     }
 

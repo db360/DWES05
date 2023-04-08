@@ -20,8 +20,7 @@ if (isset($_POST['submit']) && isset($_POST['codProducto'])) {
 
 
     } catch (\SoapFault $e) {
-        $error = ("Error: " . $e->getMessage());
-        var_dump($resultado);
+        throw new SoapFault($e->getCode(), $e->getMessage());
     }
 }
 

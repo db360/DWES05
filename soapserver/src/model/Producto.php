@@ -143,8 +143,8 @@ class Producto implements IListable, IGuardable {
                 return 1;
 
         } catch (\PDOException $e) {
-            $retorno = $e->getMessage();
-            return $retorno;
+
+            return -1;
         }
     }
     /**
@@ -175,7 +175,7 @@ class Producto implements IListable, IGuardable {
             } else {
 
                 return -1;
-                
+
             }
 
         } catch (\PDOException $e) {

@@ -19,6 +19,7 @@ function connect()
         // return $resultado->faultstring = "Error en la conexión" . $e;
 
     } finally {
+
         $pdo = null;
     }
 

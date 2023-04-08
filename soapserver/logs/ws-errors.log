@@ -417,3 +417,151 @@ Stack trace:
 #1 C:\xampp\htdocs\DWES05\soapserver\index.php(11): SoapServer->handle()
 #2 {main}
   thrown in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php on line 26
+[08-Apr-2023 12:51:45 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: Error de conexión a la base de datos: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php:26
+Stack trace:
+#0 [internal function]: ProductosSoapHandler->__construct()
+#1 C:\xampp\htdocs\DWES05\soapserver\index.php(11): SoapServer->handle()
+#2 {main}
+  thrown in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php on line 26
+[08-Apr-2023 12:52:47 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: Error de conexión a la base de datos: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php:26
+Stack trace:
+#0 [internal function]: ProductosSoapHandler->__construct()
+#1 C:\xampp\htdocs\DWES05\soapserver\index.php(11): SoapServer->handle()
+#2 {main}
+  thrown in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php on line 26
+[08-Apr-2023 13:19:48 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php on line 109
+[08-Apr-2023 13:19:48] (INFO)Index.php - 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ns1=&quot;http://localhost/dwes05/tarea&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns1:detalleProductoResponse&gt;&lt;producto xsi:type=&quot;ns1:typeProducto&quot;&gt;&lt;id xsi:type=&quot;xsd:int&quot;&gt;-2&lt;/id&gt;&lt;cod xsi:type=&quot;xsd:string&quot;&gt;0&lt;/cod&gt;&lt;desc xsi:type=&quot;xsd:string&quot;&gt;0&lt;/desc&gt;&lt;precio xsi:type=&quot;xsd:decimal&quot;&gt;0&lt;/precio&gt;&lt;stock xsi:type=&quot;xsd:integer&quot;&gt;0&lt;/stock&gt;&lt;/producto&gt;&lt;/ns1:detalleProductoResponse&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+[08-Apr-2023 13:28:00 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php on line 118
+[08-Apr-2023 13:28:00] (INFO)Index.php - 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ns1=&quot;http://localhost/dwes05/tarea&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns1:detalleProductoResponse&gt;&lt;producto xsi:type=&quot;ns1:typeProducto&quot;&gt;&lt;id xsi:type=&quot;xsd:int&quot;&gt;-2&lt;/id&gt;&lt;cod xsi:type=&quot;xsd:string&quot;&gt;0&lt;/cod&gt;&lt;desc xsi:type=&quot;xsd:string&quot;&gt;0&lt;/desc&gt;&lt;precio xsi:type=&quot;xsd:decimal&quot;&gt;0&lt;/precio&gt;&lt;stock xsi:type=&quot;xsd:integer&quot;&gt;0&lt;/stock&gt;&lt;/producto&gt;&lt;/ns1:detalleProductoResponse&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+[08-Apr-2023 13:53:10 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php on line 123
+[08-Apr-2023 13:53:10] (INFO)Index.php - 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ns1=&quot;http://localhost/dwes05/tarea&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns1:detalleProductoResponse&gt;&lt;producto xsi:type=&quot;ns1:typeProducto&quot;&gt;&lt;id xsi:type=&quot;xsd:int&quot;&gt;-2&lt;/id&gt;&lt;cod xsi:type=&quot;xsd:string&quot;&gt;0&lt;/cod&gt;&lt;desc xsi:type=&quot;xsd:string&quot;&gt;0&lt;/desc&gt;&lt;precio xsi:type=&quot;xsd:decimal&quot;&gt;0&lt;/precio&gt;&lt;stock xsi:type=&quot;xsd:integer&quot;&gt;0&lt;/stock&gt;&lt;/producto&gt;&lt;/ns1:detalleProductoResponse&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+[08-Apr-2023 13:53:53 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php on line 123
+[08-Apr-2023 13:53:53] (INFO)Index.php - 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ns1=&quot;http://localhost/dwes05/tarea&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns1:detalleProductoResponse&gt;&lt;producto xsi:type=&quot;ns1:typeProducto&quot;&gt;&lt;id xsi:type=&quot;xsd:int&quot;&gt;-2&lt;/id&gt;&lt;cod xsi:type=&quot;xsd:string&quot;&gt;0&lt;/cod&gt;&lt;desc xsi:type=&quot;xsd:string&quot;&gt;0&lt;/desc&gt;&lt;precio xsi:type=&quot;xsd:decimal&quot;&gt;0&lt;/precio&gt;&lt;stock xsi:type=&quot;xsd:integer&quot;&gt;0&lt;/stock&gt;&lt;/producto&gt;&lt;/ns1:detalleProductoResponse&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+[08-Apr-2023 13:54:00 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php on line 123
+[08-Apr-2023 13:54:00] (INFO)Index.php - 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ns1=&quot;http://localhost/dwes05/tarea&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns1:detalleProductoResponse&gt;&lt;producto xsi:type=&quot;ns1:typeProducto&quot;&gt;&lt;id xsi:type=&quot;xsd:int&quot;&gt;-2&lt;/id&gt;&lt;cod xsi:type=&quot;xsd:string&quot;&gt;0&lt;/cod&gt;&lt;desc xsi:type=&quot;xsd:string&quot;&gt;0&lt;/desc&gt;&lt;precio xsi:type=&quot;xsd:decimal&quot;&gt;0&lt;/precio&gt;&lt;stock xsi:type=&quot;xsd:integer&quot;&gt;0&lt;/stock&gt;&lt;/producto&gt;&lt;/ns1:detalleProductoResponse&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+[08-Apr-2023 13:54:35 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php on line 123
+[08-Apr-2023 13:54:35] (INFO)Index.php - 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ns1=&quot;http://localhost/dwes05/tarea&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns1:detalleProductoResponse&gt;&lt;producto xsi:type=&quot;ns1:typeProducto&quot;&gt;&lt;id xsi:type=&quot;xsd:int&quot;&gt;-2&lt;/id&gt;&lt;cod xsi:type=&quot;xsd:string&quot;&gt;0&lt;/cod&gt;&lt;desc xsi:type=&quot;xsd:string&quot;&gt;0&lt;/desc&gt;&lt;precio xsi:type=&quot;xsd:decimal&quot;&gt;0&lt;/precio&gt;&lt;stock xsi:type=&quot;xsd:integer&quot;&gt;0&lt;/stock&gt;&lt;/producto&gt;&lt;/ns1:detalleProductoResponse&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+[08-Apr-2023 13:54:39 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php on line 123
+[08-Apr-2023 13:54:39] (INFO)Index.php - 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ns1=&quot;http://localhost/dwes05/tarea&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns1:detalleProductoResponse&gt;&lt;producto xsi:type=&quot;ns1:typeProducto&quot;&gt;&lt;id xsi:type=&quot;xsd:int&quot;&gt;-2&lt;/id&gt;&lt;cod xsi:type=&quot;xsd:string&quot;&gt;0&lt;/cod&gt;&lt;desc xsi:type=&quot;xsd:string&quot;&gt;0&lt;/desc&gt;&lt;precio xsi:type=&quot;xsd:decimal&quot;&gt;0&lt;/precio&gt;&lt;stock xsi:type=&quot;xsd:integer&quot;&gt;0&lt;/stock&gt;&lt;/producto&gt;&lt;/ns1:detalleProductoResponse&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+[08-Apr-2023 13:54:39 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php on line 123
+[08-Apr-2023 13:54:39] (INFO)Index.php - 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ns1=&quot;http://localhost/dwes05/tarea&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns1:detalleProductoResponse&gt;&lt;producto xsi:type=&quot;ns1:typeProducto&quot;&gt;&lt;id xsi:type=&quot;xsd:int&quot;&gt;-2&lt;/id&gt;&lt;cod xsi:type=&quot;xsd:string&quot;&gt;0&lt;/cod&gt;&lt;desc xsi:type=&quot;xsd:string&quot;&gt;0&lt;/desc&gt;&lt;precio xsi:type=&quot;xsd:decimal&quot;&gt;0&lt;/precio&gt;&lt;stock xsi:type=&quot;xsd:integer&quot;&gt;0&lt;/stock&gt;&lt;/producto&gt;&lt;/ns1:detalleProductoResponse&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+[08-Apr-2023 13:56:42 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php on line 122
+[08-Apr-2023 13:56:42] (INFO)Index.php - 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ns1=&quot;http://localhost/dwes05/tarea&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns1:detalleProductoResponse&gt;&lt;producto xsi:type=&quot;ns1:typeProducto&quot;&gt;&lt;id xsi:type=&quot;xsd:int&quot;&gt;-2&lt;/id&gt;&lt;cod xsi:type=&quot;xsd:string&quot;&gt;0&lt;/cod&gt;&lt;desc xsi:type=&quot;xsd:string&quot;&gt;0&lt;/desc&gt;&lt;precio xsi:type=&quot;xsd:decimal&quot;&gt;0&lt;/precio&gt;&lt;stock xsi:type=&quot;xsd:integer&quot;&gt;0&lt;/stock&gt;&lt;/producto&gt;&lt;/ns1:detalleProductoResponse&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+[08-Apr-2023 13:57:29 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php on line 122
+[08-Apr-2023 13:57:29] (INFO)Index.php - 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ns1=&quot;http://localhost/dwes05/tarea&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns1:detalleProductoResponse&gt;&lt;producto xsi:type=&quot;ns1:typeProducto&quot;&gt;&lt;id xsi:type=&quot;xsd:int&quot;&gt;-2&lt;/id&gt;&lt;cod xsi:type=&quot;xsd:string&quot;&gt;0&lt;/cod&gt;&lt;desc xsi:type=&quot;xsd:string&quot;&gt;0&lt;/desc&gt;&lt;precio xsi:type=&quot;xsd:decimal&quot;&gt;0&lt;/precio&gt;&lt;stock xsi:type=&quot;xsd:integer&quot;&gt;0&lt;/stock&gt;&lt;/producto&gt;&lt;/ns1:detalleProductoResponse&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+[08-Apr-2023 13:58:20 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php on line 122
+[08-Apr-2023 13:58:20] (INFO)Index.php - 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ns1=&quot;http://localhost/dwes05/tarea&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns1:detalleProductoResponse&gt;&lt;producto xsi:type=&quot;ns1:typeProducto&quot;&gt;&lt;id xsi:type=&quot;xsd:int&quot;&gt;-2&lt;/id&gt;&lt;cod xsi:type=&quot;xsd:string&quot;&gt;0&lt;/cod&gt;&lt;desc xsi:type=&quot;xsd:string&quot;&gt;0&lt;/desc&gt;&lt;precio xsi:type=&quot;xsd:decimal&quot;&gt;0&lt;/precio&gt;&lt;stock xsi:type=&quot;xsd:integer&quot;&gt;0&lt;/stock&gt;&lt;/producto&gt;&lt;/ns1:detalleProductoResponse&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+[08-Apr-2023 13:58:24 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php on line 122
+[08-Apr-2023 13:58:24] (INFO)Index.php - 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ns1=&quot;http://localhost/dwes05/tarea&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns1:detalleProductoResponse&gt;&lt;producto xsi:type=&quot;ns1:typeProducto&quot;&gt;&lt;id xsi:type=&quot;xsd:int&quot;&gt;-2&lt;/id&gt;&lt;cod xsi:type=&quot;xsd:string&quot;&gt;0&lt;/cod&gt;&lt;desc xsi:type=&quot;xsd:string&quot;&gt;0&lt;/desc&gt;&lt;precio xsi:type=&quot;xsd:decimal&quot;&gt;0&lt;/precio&gt;&lt;stock xsi:type=&quot;xsd:integer&quot;&gt;0&lt;/stock&gt;&lt;/producto&gt;&lt;/ns1:detalleProductoResponse&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+[08-Apr-2023 13:58:42] (INFO)Index.php - 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ns1=&quot;http://localhost/dwes05/tarea&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns1:detalleProductoResponse&gt;&lt;producto xsi:type=&quot;ns1:typeProducto&quot;&gt;&lt;id xsi:type=&quot;xsd:int&quot;&gt;-2&lt;/id&gt;&lt;cod xsi:type=&quot;xsd:string&quot;&gt;0&lt;/cod&gt;&lt;desc xsi:type=&quot;xsd:string&quot;&gt;0&lt;/desc&gt;&lt;precio xsi:type=&quot;xsd:decimal&quot;&gt;0&lt;/precio&gt;&lt;stock xsi:type=&quot;xsd:integer&quot;&gt;0&lt;/stock&gt;&lt;/producto&gt;&lt;/ns1:detalleProductoResponse&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+[08-Apr-2023 13:58:48] (INFO)Index.php - 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ns1=&quot;http://localhost/dwes05/tarea&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns1:detalleProductoResponse&gt;&lt;producto xsi:type=&quot;ns1:typeProducto&quot;&gt;&lt;id xsi:type=&quot;xsd:int&quot;&gt;-2&lt;/id&gt;&lt;cod xsi:type=&quot;xsd:string&quot;&gt;0&lt;/cod&gt;&lt;desc xsi:type=&quot;xsd:string&quot;&gt;0&lt;/desc&gt;&lt;precio xsi:type=&quot;xsd:decimal&quot;&gt;0&lt;/precio&gt;&lt;stock xsi:type=&quot;xsd:integer&quot;&gt;0&lt;/stock&gt;&lt;/producto&gt;&lt;/ns1:detalleProductoResponse&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+[08-Apr-2023 13:59:23] (INFO)Index.php - 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ns1=&quot;http://localhost/dwes05/tarea&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns1:detalleProductoResponse&gt;&lt;producto xsi:type=&quot;ns1:typeProducto&quot;&gt;&lt;id xsi:type=&quot;xsd:int&quot;&gt;-2&lt;/id&gt;&lt;cod xsi:type=&quot;xsd:string&quot;&gt;0&lt;/cod&gt;&lt;desc xsi:type=&quot;xsd:string&quot;&gt;0&lt;/desc&gt;&lt;precio xsi:type=&quot;xsd:decimal&quot;&gt;0&lt;/precio&gt;&lt;stock xsi:type=&quot;xsd:integer&quot;&gt;0&lt;/stock&gt;&lt;/producto&gt;&lt;/ns1:detalleProductoResponse&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+[08-Apr-2023 13:59:28] (INFO)Index.php - 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ns1=&quot;http://localhost/dwes05/tarea&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns1:detalleProductoResponse&gt;&lt;producto xsi:type=&quot;ns1:typeProducto&quot;&gt;&lt;id xsi:type=&quot;xsd:int&quot;&gt;-2&lt;/id&gt;&lt;cod xsi:type=&quot;xsd:string&quot;&gt;0&lt;/cod&gt;&lt;desc xsi:type=&quot;xsd:string&quot;&gt;0&lt;/desc&gt;&lt;precio xsi:type=&quot;xsd:decimal&quot;&gt;0&lt;/precio&gt;&lt;stock xsi:type=&quot;xsd:integer&quot;&gt;0&lt;/stock&gt;&lt;/producto&gt;&lt;/ns1:detalleProductoResponse&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+[08-Apr-2023 13:59:58] (INFO)Index.php - 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ns1=&quot;http://localhost/dwes05/tarea&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns1:detalleProductoResponse&gt;&lt;producto xsi:type=&quot;ns1:typeProducto&quot;&gt;&lt;id xsi:type=&quot;xsd:int&quot;&gt;-3&lt;/id&gt;&lt;cod xsi:type=&quot;xsd:string&quot;&gt;0&lt;/cod&gt;&lt;desc xsi:type=&quot;xsd:string&quot;&gt;0&lt;/desc&gt;&lt;precio xsi:type=&quot;xsd:decimal&quot;&gt;0&lt;/precio&gt;&lt;stock xsi:type=&quot;xsd:integer&quot;&gt;0&lt;/stock&gt;&lt;/producto&gt;&lt;/ns1:detalleProductoResponse&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+[08-Apr-2023 14:00:03] (INFO)Index.php - 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ns1=&quot;http://localhost/dwes05/tarea&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns1:detalleProductoResponse&gt;&lt;producto xsi:type=&quot;ns1:typeProducto&quot;&gt;&lt;id xsi:type=&quot;xsd:int&quot;&gt;-1&lt;/id&gt;&lt;cod xsi:type=&quot;xsd:string&quot;&gt;0&lt;/cod&gt;&lt;desc xsi:type=&quot;xsd:string&quot;&gt;0&lt;/desc&gt;&lt;precio xsi:type=&quot;xsd:decimal&quot;&gt;0&lt;/precio&gt;&lt;stock xsi:type=&quot;xsd:integer&quot;&gt;0&lt;/stock&gt;&lt;/producto&gt;&lt;/ns1:detalleProductoResponse&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+[08-Apr-2023 14:00:15 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: Error de conexión a la base de datos: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php:26
+Stack trace:
+#0 [internal function]: ProductosSoapHandler->__construct()
+#1 C:\xampp\htdocs\DWES05\soapserver\index.php(11): SoapServer->handle()
+#2 {main}
+  thrown in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php on line 26
+[08-Apr-2023 14:01:39 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: Error de conexión a la base de datos: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php:26
+Stack trace:
+#0 [internal function]: ProductosSoapHandler->__construct()
+#1 C:\xampp\htdocs\DWES05\soapserver\index.php(11): SoapServer->handle()
+#2 {main}
+  thrown in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php on line 26
+[08-Apr-2023 14:03:05 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: Error de conexión a la base de datos: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php:26
+Stack trace:
+#0 [internal function]: ProductosSoapHandler->__construct()
+#1 C:\xampp\htdocs\DWES05\soapserver\index.php(11): SoapServer->handle()
+#2 {main}
+  thrown in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php on line 26
+[08-Apr-2023 14:04:44 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: Error de conexión a la base de datos: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php:26
+Stack trace:
+#0 [internal function]: ProductosSoapHandler->__construct()
+#1 C:\xampp\htdocs\DWES05\soapserver\index.php(11): SoapServer->handle()
+#2 {main}
+  thrown in C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php on line 26
+[08-Apr-2023 14:05:58] (INFO)Index.php - 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ns1=&quot;http://localhost/dwes05/tarea&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns1:detalleProductoResponse&gt;&lt;producto xsi:type=&quot;ns1:typeProducto&quot;&gt;&lt;id xsi:type=&quot;xsd:int&quot;&gt;-2&lt;/id&gt;&lt;cod xsi:type=&quot;xsd:string&quot;&gt;0&lt;/cod&gt;&lt;desc xsi:type=&quot;xsd:string&quot;&gt;0&lt;/desc&gt;&lt;precio xsi:type=&quot;xsd:decimal&quot;&gt;0&lt;/precio&gt;&lt;stock xsi:type=&quot;xsd:integer&quot;&gt;0&lt;/stock&gt;&lt;/producto&gt;&lt;/ns1:detalleProductoResponse&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+[08-Apr-2023 14:06:58 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\xampp\htdocs\DWES05\soapserver\src\conn.php:11
+Stack trace:
+#0 C:\xampp\htdocs\DWES05\soapserver\src\conn.php(11): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\xampp\htdocs\DWES05\soapserver\src\ProductosSoapHandler.php(23): connect()
+#2 [internal function]: ProductosSoapHandler->__construct()
+#3 C:\xampp\htdocs\DWES05\soapserver\index.php(11): SoapServer->handle()
+#4 {main}
+  thrown in C:\xampp\htdocs\DWES05\soapserver\src\conn.php on line 11
+[08-Apr-2023 14:07:07] (INFO)Index.php - 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ns1=&quot;http://localhost/dwes05/tarea&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns1:detalleProductoResponse&gt;&lt;producto xsi:type=&quot;ns1:typeProducto&quot;&gt;&lt;id xsi:type=&quot;xsd:int&quot;&gt;-2&lt;/id&gt;&lt;cod xsi:type=&quot;xsd:string&quot;&gt;0&lt;/cod&gt;&lt;desc xsi:type=&quot;xsd:string&quot;&gt;0&lt;/desc&gt;&lt;precio xsi:type=&quot;xsd:decimal&quot;&gt;0&lt;/precio&gt;&lt;stock xsi:type=&quot;xsd:integer&quot;&gt;0&lt;/stock&gt;&lt;/producto&gt;&lt;/ns1:detalleProductoResponse&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+[08-Apr-2023 14:07:16] (INFO)Index.php - 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ns1=&quot;http://localhost/dwes05/tarea&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns1:detalleProductoResponse&gt;&lt;producto xsi:type=&quot;ns1:typeProducto&quot;&gt;&lt;id xsi:type=&quot;xsd:int&quot;&gt;-3&lt;/id&gt;&lt;cod xsi:type=&quot;xsd:string&quot;&gt;0&lt;/cod&gt;&lt;desc xsi:type=&quot;xsd:string&quot;&gt;0&lt;/desc&gt;&lt;precio xsi:type=&quot;xsd:decimal&quot;&gt;0&lt;/precio&gt;&lt;stock xsi:type=&quot;xsd:integer&quot;&gt;0&lt;/stock&gt;&lt;/producto&gt;&lt;/ns1:detalleProductoResponse&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+[08-Apr-2023 14:07:21] (INFO)Index.php - 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ns1=&quot;http://localhost/dwes05/tarea&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns1:detalleProductoResponse&gt;&lt;producto xsi:type=&quot;ns1:typeProducto&quot;&gt;&lt;id xsi:type=&quot;xsd:int&quot;&gt;-1&lt;/id&gt;&lt;cod xsi:type=&quot;xsd:string&quot;&gt;0&lt;/cod&gt;&lt;desc xsi:type=&quot;xsd:string&quot;&gt;0&lt;/desc&gt;&lt;precio xsi:type=&quot;xsd:decimal&quot;&gt;0&lt;/precio&gt;&lt;stock xsi:type=&quot;xsd:integer&quot;&gt;0&lt;/stock&gt;&lt;/producto&gt;&lt;/ns1:detalleProductoResponse&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
+[08-Apr-2023 14:07:29] (INFO)Index.php - 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ns1=&quot;http://localhost/dwes05/tarea&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;SOAP-ENV:Body&gt;&lt;ns1:detalleProductoResponse&gt;&lt;producto xsi:type=&quot;ns1:typeProducto&quot;&gt;&lt;id xsi:type=&quot;xsd:int&quot;&gt;1&lt;/id&gt;&lt;cod xsi:type=&quot;xsd:string&quot;&gt;A01&lt;/cod&gt;&lt;desc xsi:type=&quot;xsd:string&quot;&gt;Hielo Bolsa 1 Kg&lt;/desc&gt;&lt;precio xsi:type=&quot;xsd:decimal&quot;&gt;1.99&lt;/precio&gt;&lt;stock xsi:type=&quot;xsd:integer&quot;&gt;96&lt;/stock&gt;&lt;/producto&gt;&lt;/ns1:detalleProductoResponse&gt;&lt;/SOAP-ENV:Body&gt;&lt;/SOAP-ENV:Envelope&gt;
+
