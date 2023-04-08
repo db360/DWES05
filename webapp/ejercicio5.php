@@ -10,14 +10,13 @@ if (isset($_POST['submit']) && isset($_POST['codProducto'])) {
 
     $cod = trim(filter_input(INPUT_POST, 'codProducto', FILTER_SANITIZE_STRING));
 
-    var_dump($_POST);
-    var_dump($cod);
+    // var_dump($_POST);
+    // var_dump($cod);
 
     try {
         $resultado = $client->detalleProducto($cod);
         // $resultado->precio = floatval($resultado->precio);
-        var_dump($resultado);
-
+        // var_dump($resultado);
 
     } catch (\SoapFault $e) {
         throw new SoapFault($e->getCode(), $e->getMessage());
@@ -33,24 +32,23 @@ if (isset($resultado) && $resultado->id === -1) {
     $error = "Error: El código de producto no existe en la base de datos";
 }
 
-if (isset($resultado) && $resultado->id === -2) {
-    $error = "Error: Hubo un error en la base de datos";
+if (isset($resultado) && $resultado->id === -2 && $resultado->stock === 0) {
+    $error = "Error: Hubo un error en la conexion a la base de datos";
+}
+if (isset($resultado) && $resultado->id === -2 && $resultado->stock === 1) {
+    $error = "Error: Hubo un error en la consulta a la base de datos";
+}
+if (isset($resultado) && $resultado->id === -2 && $resultado->stock === 2) {
+    $error = "Error: Hubo un error con el servicio SOAP";
 }
 if (isset($resultado) && $resultado->id === -3) {
     $error = "El campo código no puede estar vacío";
 }
 
 
-
-
-
-
-
-var_dump($error);
-var_dump($success);
-var_dump($resultado);
-// var_dump($resultado->result);
-// var_dump($resultado->descResult);
+// var_dump($error);
+// var_dump($success);
+// var_dump($resultado);
 
 ?>
 

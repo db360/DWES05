@@ -25,7 +25,7 @@ class ProductosSoapHandler
         } catch (\PDOException $e) {
 
             $this->pdo = null;
-            
+
             return;
         }
 
@@ -131,10 +131,12 @@ class ProductosSoapHandler
                 $resultado->stock = 0;
 
                 return $resultado;
+
             } else {
+
                 try {
-                    //code...
-                    if($codProducto === '') {
+
+                    if($codProducto === '' || !is_string($codProducto)) {
 
                         $resultado->id = -3;
                         $resultado->cod = 0;
@@ -200,10 +202,6 @@ class ProductosSoapHandler
 
                 }
             }
-
-
-
-
     }
 
     /**
