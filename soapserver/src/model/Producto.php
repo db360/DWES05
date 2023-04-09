@@ -193,9 +193,11 @@ class Producto implements IListable, IGuardable {
         try {
             $stmt = $pdo->prepare("DELETE FROM productos WHERE id=?");
             $stmt->execute([$id]);
+
             return $stmt->rowCount();
 
         } catch (\PDOException $e) {
+            
             return false;
         }
     }
@@ -209,14 +211,18 @@ class Producto implements IListable, IGuardable {
     public static function listar($pdo, $lim, $offset) {
 
         try {
-            $stmt = $pdo->prepare("SELECT id FROM productos LIMIT ? OFFSET ?");
+            $stmt = $pdo->prepare("SELECT cod FROM productos LIMIT ? OFFSET ?");
             $stmt->bindValue(1, $lim, \PDO::PARAM_INT);
             $stmt->bindValue(2, $offset, \PDO::PARAM_INT);
             $stmt->execute();
             $productos = $stmt->fetchAll(\PDO::FETCH_COLUMN);
+
             $listaProductos = array();
+
             foreach ($productos as $producto) {
+
                 $listaProductos[] = Producto::rescatar($pdo, $producto);
+
             }
             return $listaProductos;
 

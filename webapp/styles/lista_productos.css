@@ -10,9 +10,12 @@ body {
   font-family: sans-serif;
   font-weight: 100;
 }
+
+.container {
+  width: 80% !important;
+}
 .table-container {
-  margin: 3rem auto;
-  width: 50%;
+  width: 100%;
 }
 .table-title {
   text-align: center;
@@ -109,12 +112,12 @@ form .btn-nuevo {
 
 .btn-container .btn-editar,
 form .btn-editar {
-  background: #5c3b85;
-  box-shadow: #5c3b85 0 10px 20px -10px;
+  background: #ff0000;
+  box-shadow: #ff0000 0 10px 20px -10px;
 }
 .btn-container .btn-editar:hover,
 form .btn-editar {
-  background: #3d2658;
+  background: #561616;
 }
 
 .w20 {

@@ -69,7 +69,7 @@ class ProductosSoapHandler
         try {
             $productoGuardar = new Producto($cod, $desc, $precio, $stock);
 
-            if(isset($pdo) || $pdo === null) {
+            if(!isset($this->pdo) || $this->pdo === null) {
 
                 $resultado->result = -2;
                 $resultado->descResult = "Base de datos no disponible";
@@ -77,7 +77,6 @@ class ProductosSoapHandler
 
             } else {
                 $guardar = $productoGuardar->guardar($this->pdo);
-
             }
 
         } catch (\SoapFault $e) {
@@ -211,13 +210,50 @@ class ProductosSoapHandler
      */
     public function eliminarProducto($idProducto)
     {
-        try {
-            $resultado = Producto::borrar($this->pdo, $idProducto);
+        $resultado = new stdClass();
+
+        $idProducto = intval($idProducto);
+
+        if(!isset($this->pdo) || $this->pdo === null) {
+            $resultado->result = -3;
+            $resultado->descResult = 'Error con la conexion a la base de datos';
             return $resultado;
-        } catch (\SoapFault $e) {
-            // Error
-            throw new \SoapFault("Error Eliminando Producto: ", $e->getMessage());
+
+        } else {
+
+            if(!is_int($idProducto) || $idProducto < 0) {
+
+            } else {
+
+                try {
+
+                    $borrarProducto = Producto::borrar($this->pdo, $idProducto);
+
+                    if($borrarProducto === 1) {
+                        $resultado = new stdClass();
+                        $resultado->result = 1;
+                        $resultado->descResult = 'Producto correctamente eliminado!';
+                    }
+                    if($borrarProducto === 0) {
+                        $resultado = new stdClass();
+                        $resultado->result = -1;
+                        $resultado->descResult = 'No existe ningun producto con ese ID';
+                    }
+                    if($borrarProducto === -1 || $borrarProducto === false) {
+                        $resultado = new stdClass();
+                        $resultado->result = -2;
+                        $resultado->descResult = 'Error al eliminar producto en la base de datos';
+                    }
+
+                    return $resultado;
+
+                } catch (\SoapFault $e) {
+                    // Error
+                    throw new \SoapFault("Error Eliminando Producto: ", $e->getMessage());
+                }
+            }
         }
+
     }
     /**
      * @return [array<Producto>]
@@ -226,7 +262,7 @@ class ProductosSoapHandler
     {
         try {
 
-            $listaProductos = Producto::listar($this->pdo, 5, 0);
+            $listaProductos = Producto::listar($this->pdo, 10, 10);
 
             if (isset($listaProductos)) {
 
@@ -250,9 +286,9 @@ class ProductosSoapHandler
 
             }
 
-        } catch (Error $e) {
+        } catch (SoapFault $e) {
             // Error
-            throw new Error("Error Listando Producto: ", $e->getMessage());
+            throw new SoapFault("Error Listando Producto: ", $e->getMessage());
         }
     }
 }
