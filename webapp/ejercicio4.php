@@ -31,12 +31,12 @@ if (isset($_POST['submit'])) {
 
         $nuevoProducto = $client->nuevoProducto($producto);
 
-        if (isset($nuevoProducto->result) && $nuevoProducto->result > 1) {
+        if (isset($nuevoProducto->result) && $nuevoProducto->result === 1) {
             $success = true;
         }
 
         if (isset($nuevoProducto->result) && $nuevoProducto->result < 0) {
-            $error[] = $nuevoProducto->descResult;
+            $error[0] = $nuevoProducto->descResult;
         }
 
 
@@ -91,62 +91,64 @@ if (isset($_POST['submit'])) {
     <title>Añadir Nuevo Producto via Soap</title>
     <link rel="stylesheet" href="styles/lista_productos.css">
     <link rel="stylesheet" href="styles/nuevo_producto.css">
+    <link rel="stylesheet" href="styles/modificar_producto.css">
+    <link rel="stylesheet" href="styles/borrar_producto.css">
 </head>
 
 <body>
-    <div class="container  {if $errorguardar != '' ||  $success != ''}transparent{/if}">
-        <!-- {if $errores}
-            <ul>
-              {foreach $errores as $error}
-                <li class="error">{$error}</li>
-              {/foreach}
-            </ul>
-          {/if}
-        {if $errorguardar} -->
-        <!-- <div class="resultado">
-                <h1 class="succes-title">{$errorguardar}</h1>                            .
-                <a href="{$rooturl}/nuevoproducto">
-                <form method="post">
-                  <button type="submit" class="btn btn-nuevo succes-btn">Volver</button>
+    <div class="container">
+
+        <?php if (isset($error[0])) { ?>
+            <div class="campo campo-resultado">
+                <h3 class="titulo-producto error">
+                    <?= $error[0] ?>
+                </h3>
+                <div class="campo volver">
+                    <button type="submit" value="submit" class="btn btn-nuevo w20" name="submit"><a class="enlace"
+                            href="ejercicio4.php">Volver</a> </button>
+                </div>
+            </div>
+        <?php } else { ?>
+
+            <?php if ($success === true && is_object($nuevoProducto)) { ?>
+                <div class="campo campo-resultado">
+                    <h3 class="titulo-producto green">
+                        <?= $nuevoProducto->descResult ?>
+                    </h3>
+                    <div class="campo volver">
+                        <button type="submit" value="submit" class="btn btn-nuevo w20" name="submit"><a class="enlace"
+                                href="ejercicio4.php">Volver</a> </button>
+                    </div>
+                </div>
+            <?php } else { ?>
+                <form action="ejercicio4.php" method="POST">
+                    <h2 class="formsTitle">Añadir Nuevo Producto via Soap:</h2>
+                    <div class="campo">
+                        <label for="cod">Código:</label>
+                        <input class="cod" type="text" id="cod" placeholder="Codigo..." name="cod">
+                    </div>
+
+                    <div class="campo">
+                        <label for="desc">Descripción:</label>
+                        <input placeholder="Descripción..." type="text" id="desc" id="desc" name="desc">
+                    </div>
+
+                    <div class="campo">
+                        <label for="precio">Precio:</label>
+                        <input placeholder="Precio..." type="text" id="precio" name="precio">
+                    </div>
+
+                    <div class="campo">
+                        <label for="stock">Stock:</label>
+                        <input placeholder="Stock..." type="text" id="stock" name="stock">
+                    </div>
+                    <div class="campo">
+                        <button type="submit" value="submit" class="btn btn-nuevo" name="submit">Enviar</button>
+                    </div>
                 </form>
-                </a>
-            </div> -->
-        <!-- {/if}
-        {if $success} -->
-        <!-- <div class="resultado">
-                <h1 class="succes-title">{$success}</h1>                            .
-                <a href="{$rooturl}">
-                    <button class="btn btn-nuevo succes-btn">Inicio</button>
-                </a>
-            </div>
-        {/if} -->
+            <?php } ?>
 
-
-        <form action="ejercicio4.php" method="POST">
-            <h2 class="formsTitle">Añadir Nuevo Producto via Soap:</h2>
-            <div class="campo campoNombre">
-                <label for="cod">Código:</label>
-                <input class="cod" type="text" id="cod" placeholder="Codigo..." name="cod">
-            </div>
-
-            <div class="campo">
-                <label for="desc">Descripción:</label>
-                <input placeholder="Descripción..." type="text" id="desc" id="desc" name="desc">
-            </div>
-
-            <div class="campo">
-                <label for="precio">Precio:</label>
-                <input placeholder="Precio..." type="text" id="precio" name="precio">
-            </div>
-
-            <div class="campo">
-                <label for="stock">Stock:</label>
-                <input placeholder="Stock..." type="text" id="stock" name="stock">
-            </div>
-            <div class="campo">
-            <button type="submit" value="submit" class="btn btn-nuevo w20" name="submit">Enviar</button>
-            </div>
-        </form>
+        <?php } ?>
     </div>
 </body>
 

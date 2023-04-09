@@ -106,7 +106,7 @@ class ProductosSoapHandler
 
             default:
                 $resultado->result = -1;
-                $resultado->descResult = 'Error creando el producto';
+                $resultado->descResult = 'Error creando el producto ' . $guardar;
                 break;
         }
 
@@ -262,7 +262,7 @@ class ProductosSoapHandler
     {
         try {
 
-            $listaProductos = Producto::listar($this->pdo, 10, 10);
+            $listaProductos = Producto::listar($this->pdo, 10, 0);
 
             if (isset($listaProductos)) {
 
@@ -275,7 +275,7 @@ class ProductosSoapHandler
 
                     $typeProducto->cod = $producto->cod;
                     $typeProducto->desc = $producto->desc;
-                    $typeProducto->precio = $producto->precio;
+                    $typeProducto->precio = sprintf('%01.2f',$producto->precio);
                     $typeProducto->stock = $producto->stock;
                     $typeProducto->id = $producto->id;
 

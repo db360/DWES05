@@ -31,11 +31,13 @@ table {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
+tr {
+}
 th,
 td {
-  padding: 15px 20px;
   background-color: rgba(255, 255, 255, 0.2);
   color: #fff;
+  height: 3rem;
 }
 th {
   text-align: left;
@@ -74,12 +76,25 @@ tbody td:hover::before {
 .precio {
   width: 15%;
   font-weight: bold;
+  text-align: right;
+}
+.precio span {
+  margin-right: 1rem;
 }
 .stock {
   width: 10%;
+  text-align: right;
 }
+.stock span {
+  margin-right: 0.5rem;
+}
+
 .operaciones {
   padding: 0 0;
+}
+
+.table-container .operaciones .operaciones-form {
+  width: 100% !important;
 }
 
 /* BOTONES */
@@ -159,8 +174,8 @@ form .btn-nuevo:hover {
 }
 
 form {
-  align-items: center;
   margin: 10 15px;
+  align-items: unset !important;
 }
 table a {
   padding: 0.1rem 0.5rem !important;
@@ -181,13 +196,12 @@ form .btn-form {
   text-transform: uppercase;
 }
 
-.btn-operaciones{
-  width: 100% !important;
-  height: 100% !important;
-}
 
 .btn-modificar {
   font-size: medium !important;
   width: 8rem !important;
 }
 
+.w40 {
+  width: 40% !important;
+}

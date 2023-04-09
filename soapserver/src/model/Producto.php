@@ -144,7 +144,7 @@ class Producto implements IListable, IGuardable {
 
         } catch (\PDOException $e) {
 
-            return -1;
+            return $e->getMessage();
         }
     }
     /**
@@ -197,7 +197,7 @@ class Producto implements IListable, IGuardable {
             return $stmt->rowCount();
 
         } catch (\PDOException $e) {
-            
+
             return false;
         }
     }

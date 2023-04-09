@@ -8,12 +8,15 @@ $client = new SoapClient($wsdl);
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
-    $id = trim(filter_input(INPUT_GET, 'idProducto', FILTER_VALIDATE_INT));
-} elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+
+    $id = trim(filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT));
+
+} elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idProducto'])) {
+    # code...
 
     $id = trim(filter_input(INPUT_POST, 'idProducto', FILTER_VALIDATE_INT));
-
-    var_dump($id);
+    // var_dump($id);
+}
 
     if (!$id) {
 
@@ -41,9 +44,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
         }
 
     }
-}
 
 var_dump($_POST);
+var_dump($_GET);
 var_dump($_SERVER['REQUEST_METHOD']);
 var_dump($resultado);
 var_dump($error);
@@ -91,7 +94,7 @@ var_dump($success);
                 </div>
             <?php } else { ?>
 
-                <form action="ejercicio6.php" method="POST">
+                <form action="ejercicio6.php" method="POST" class="w20">
                     <div class="campo">
                         <h3 class="texto-modificar">Inserte la ID del producto a eliminar</h3>
                     </div>
@@ -100,7 +103,7 @@ var_dump($success);
                         <input type="hidden" name="id" value="">
                         <input type="hidden" name="operacion" value="eliminar">
                     </div>
-                    <button type="submit" value="submit" name="submit" class="btn btn-nuevo btn-modificar">Eliminar</button>
+                    <button type="submit" value="submit" name="submit" class="btn btn-nuevo btn-modificar red">Eliminar</button>
                 </form>
             <?php } ?>
 

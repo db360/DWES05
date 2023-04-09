@@ -68,6 +68,7 @@ if (isset($resultado) && $resultado->id === -3) {
 <body>
 
     <div class="container">
+
         <?php if (isset($error[0])) { ?>
             <div class="campo campo-resultado">
                 <h3 class="titulo-producto error">
@@ -109,7 +110,7 @@ if (isset($resultado) && $resultado->id === -3) {
                     </div>
                 </div>
             <?php } else { ?>
-                <form action="ejercicio5.php" method="POST">
+                <form action="ejercicio5.php" method="POST" class="w20">
                     <div class="campo">
                         <h3 class="texto-modificar">Inserte el código del producto</h3>
                     </div>

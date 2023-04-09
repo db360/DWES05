@@ -6,8 +6,9 @@ $wsdl = 'http://localhost/dwes05/soapserver/tarea05.wsdl';
 $client = new SoapClient($wsdl);
 
 try {
+
    $resultado = $client->listarProductos();
-   var_dump($resultado);
+//    var_dump($resultado);
 
 } catch (\SoapFault $e) {
     //throw $th;
@@ -62,12 +63,12 @@ try {
                     <td class="id"><?=$producto->id?></td>
                     <td class="codigo"><?=$producto->cod?></td>
                     <td class="descripcion"><?=$producto->desc?></td>
-                    <td class="precio"><?=$producto->precio?>€</td>
-                    <td class="stock"><?=$producto->stock?></td>
+                    <td class="precio"><span><?=$producto->precio?> €</span> </td>
+                    <td class="stock"><span><?=$producto->stock?></span></span></td>
                     <td class="operaciones">
 
                         <div class="btn-container btn-operaciones">
-                            <form method="GET" action="ejercicio6.php">
+                            <form method="GET" action="ejercicio6.php" class="operaciones-form">
                                 <a href="#">
                                     <input type="hidden" name="id" value="<?= $producto->id ?>">
                                     <button class="btn btn-editar" type="submit">Borrar!</button>
