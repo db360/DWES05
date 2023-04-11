@@ -20,8 +20,13 @@ html {
 
 /* clases de ayuda para esconder el formulario */
 .hidden {
-  display: none;
+  display: hidden !important;
 }
+
+.display-none {
+  display: none !important;
+}
+
 .transparent {
   background-color: transparent;
   box-shadow: none;

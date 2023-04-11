@@ -5,33 +5,26 @@ require_once(__DIR__ . '/src/model/Producto.php');
 
 $pdo = connect();
 
-try {
+// $cod = 1;
+// $desc = 'dsdsdsd';
+// $precio = 'd651.51';
+// $stock = 2424;
 
-    // $resultado = Producto::rescatar($pdo, 'A01');
-    // $resultado2 = Producto::listar($pdo, 10, 0);
-    $resultado3 = Producto::borrar($pdo, 11);
+// $cod = filter_var($cod, FILTER_SANITIZE_STRING);
+// $desc = filter_var($desc, FILTER_SANITIZE_STRING);
+// $precio = filter_var($precio, FILTER_VALIDATE_FLOAT);
+// $stock = filter_var($stock, FILTER_VALIDATE_INT);
 
+$resultado = Producto::rescatar($pdo, 'A01');
+var_dump($resultado);
+// var_dump($cod);
+// var_dump($desc);
+// var_dump($precio);
+// var_dump($stock);
 
-    // foreach ($resultado as $producto) {
-
-    //     $id = $producto->id;# code...
-    //     $cod = $producto->cod;# code...
-    //     $desc = $producto->desc;# code...
-    //     $precio = $producto->precioprecio;# code...
-    //     $stock = $producto->stock;# code...
-    // }
-    //code...
-} catch (\PDOException $th) {
-    // var_dump($pdo);
-    var_dump($th);
-    //throw $th;
-}
-
-// var_dump($resultado);
-// var_dump($resultado2);
-var_dump($resultado3);
 ?>
 
+<!--
 lass ProductosSoapHandler
 {
     // ...
@@ -108,3 +101,6 @@ lass ProductosSoapHandler
 
     // ...
 }
+
+
+-->

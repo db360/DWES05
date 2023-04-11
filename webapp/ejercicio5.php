@@ -2,30 +2,47 @@
 
 $error = null;
 $success = false;
+$hidden = false;
 
-$wsdl = 'http://localhost/dwes05/soapserver/tarea05.wsdl';
-$client = new SoapClient($wsdl);
 
-if (isset($_POST['submit']) && isset($_POST['codProducto'])) {
 
-    $cod = trim(filter_input(INPUT_POST, 'codProducto', FILTER_SANITIZE_STRING));
-
-    // var_dump($_POST);
-    // var_dump($cod);
+if (isset($_POST['submit']) && isset($_POST['cod'])) {
 
     try {
-        $resultado = $client->detalleProducto($cod);
-        // $resultado->precio = floatval($resultado->precio);
-        // var_dump($resultado);
+
+    $codProducto = filter_input(INPUT_POST, 'cod', FILTER_SANITIZE_STRING);
+
+    var_dump($_POST);
+    var_dump($codProducto);
+
+        $wsdl = 'http://localhost/dwes05/soapserver/tarea05.wsdl';
+        $client = new SoapClient($wsdl);
+        $resultado = $client->detalleProducto($_POST['cod']);
+
+        var_dump($resultado);
 
     } catch (\SoapFault $e) {
+
         throw new SoapFault($e->getCode(), $e->getMessage());
     }
 }
 
 
 if (isset($resultado) && $resultado->id > 0) {
+
+    $resultado->precio = floatval($resultado->precio);
+
+
+    $_POST['id'] = $resultado->id;
+    $_POST['cod'] = $resultado->cod;
+    $_POST['desc'] = $resultado->desc;
+    $_POST['precio'] = $resultado->precio;
+    $_POST['stock'] = $resultado->stock;
+
+
+    $hidden = true;
     $success = true;
+
 }
 
 if (isset($resultado) && $resultado->id === -1) {
@@ -49,7 +66,8 @@ if (isset($resultado) && $resultado->id === -3) {
 // var_dump($error);
 // var_dump($success);
 // var_dump($resultado);
-
+var_dump($hidden);
+// var_dump($_POST);
 ?>
 
 <!DOCTYPE html>
@@ -80,51 +98,58 @@ if (isset($resultado) && $resultado->id === -3) {
                 </div>
             </div>
         <?php } else { ?>
-
-
-            <?php if ($success === true && isset($resultado)) { ?>
-                <div class="campo campo-resultado">
-                    <h3 class="titulo-producto">Detalles del Producto
-                        <?= $resultado->cod ?>:
-                    </h3>
-                    <ul class="lista-producto">
-                        <li>Código: <span>
-                                <?= $resultado->cod ?>
-                            </span></li>
-                        <li>ID: <span>
-                                <?= $resultado->id ?>
-                            </span></li>
-                        <li>Descripción: <span>
-                                <?= $resultado->desc ?>
-                            </span></li>
-                        <li>Precio: <span>
-                                <?= $resultado->precio ?>
-                            </span></li>
-                        <li>Stock: <span>
-                                <?= $resultado->stock ?>
-                            </span> </li>
-                    </ul>
+            <div class="campo campo-resultado <?= $hidden ? "" : "display-none" ?>">
+                <h3 class="titulo-producto">Detalles del Producto
+                    <?= $resultado->cod ?>:
+                </h3>
+                <ul class="lista-producto">
+                    <li>Código: <span>
+                            <?= $resultado->cod ?>
+                        </span></li>
+                    <li>ID: <span>
+                            <?= $resultado->id ?>
+                        </span></li>
+                    <li>Descripción: <span>
+                            <?= $resultado->desc ?>
+                        </span></li>
+                    <li>Precio: <span>
+                            <?= $resultado->precio ?>
+                        </span></li>
+                    <li>Stock: <span>
+                            <?= $resultado->stock ?>
+                        </span> </li>
+                </ul>
+                <div class="<?= $hidden ? "" : "hidden" ?>">
                     <div class="campo volver">
-                        <button type="submit" value="submit" class="btn btn-nuevo w20" name="submit"><a class="enlace"
+                        <button type="submit" value="volver" class="btn btn-nuevo  w40" name="submit"><a class="enlace"
                                 href="ejercicio5.php">Volver</a> </button>
                     </div>
+                    <form action="ejercicio8.php" method="POST">
+                        <div class="campo volver">
+                            <input type="hidden" name="cod" value="<?php echo $resultado->cod ?>">
+                            <input type="hidden" name="id" value="<?php echo $resultado->id ?>">
+                            <input type="hidden" name="desc" value="<?php echo $resultado->desc ?>">
+                            <input type="hidden" name="precio" value="<?php echo $resultado->precio ?>">
+                            <input type="hidden" type="text" name="stock" value="<?php echo $resultado->stock ?>">
+                            <button type="submit" value="modificar" class="btn btn-nuevo w40 error" name="operacion"><a
+                                    class="enlace">Modificar</a> </button>
+                        </div>
+                    </form>
                 </div>
-            <?php } else { ?>
-                <form action="ejercicio5.php" method="POST" class="w20">
-                    <div class="campo">
-                        <h3 class="texto-modificar">Inserte el código del producto</h3>
-                    </div>
-                    <div class="campo">
-                        <input type="text" name="codProducto" id="codProducto">
-                        <input type="hidden" name="id" value="">
-                        <input type="hidden" name="operacion" value="modificar">
-                    </div>
-                    <button type="submit" value="submit" name="submit" class="btn btn-nuevo btn-modificar">Modificar</button>
-                </form>
-
-            <?php } ?>
+            </div>
+            <form action="ejercicio5.php" method="POST" class="w20">
+                <div class="campo <?= $hidden ? "display-none" : "" ?>">
+                    <h3 class="texto-modificar">Inserte el código del producto</h3>
+                </div>
+                <div class="campo <?= $hidden ? "display-none" : "" ?>">
+                    <input type="text" name="cod" value="">
+                    <button type="submit" value="buscar" name="submit"
+                        class="btn btn-nuevo btn-modificar w40">Buscar</button>
+                </div>
+            </form>
 
         <?php } ?>
+
     </div>
 </body>
 

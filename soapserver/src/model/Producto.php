@@ -128,9 +128,9 @@ class Producto implements IListable, IGuardable {
         return $retorno;
     }
     /**
-     * @param mixed $pdo
+     * @param mixed $pdo objeto PDO que representa la conexión a la base de datos
      *
-     * @return [int/boolean]
+     * @return [int]
      */
     public function guardar($pdo) {
         try {
@@ -144,7 +144,7 @@ class Producto implements IListable, IGuardable {
 
         } catch (\PDOException $e) {
 
-            return $e->getMessage();
+            return -1;
         }
     }
     /**

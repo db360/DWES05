@@ -6,9 +6,9 @@ $success = false;
 
 if (isset($_POST['submit'])) {
 
-    echo "<pre>";
-    var_dump($_POST);
-    echo "</pre>";
+    // echo "<pre>";
+    // var_dump($_POST);
+    // echo "</pre>";
 
     try {
         // Creamos el cliente con la url a el archivo wsdl del servidor.
@@ -40,26 +40,14 @@ if (isset($_POST['submit'])) {
         }
 
 
-        echo "<pre>";
-        var_dump($producto);
-        echo "</pre>";
+        // echo "<pre>";
+        // var_dump($producto);
+        // echo "</pre>";
 
-        echo "<pre>";
-        var_dump($nuevoProducto);
-        echo "</pre>";
-        // print_r($nuevoProducto->result);
-        // print_r($nuevoProducto->result);
-        echo "<br>";
-        // print_r($nuevoProducto->descResult);
-        // print_r($nuevoProducto->faultstring);
-        // var_dump($descResult);
+        // echo "<pre>";
+        // var_dump($nuevoProducto);
+        // echo "</pre>";
 
-
-        // // llamamos el método listarProducto a través del cliente Soap
-        // $listaProductos = $client->listarProductos();
-        // var_dump($listaProductos);
-
-        // var_dump($client);
     } catch (\SoapFault $e) {
         // var_dump($e);
         $error[0] = ("Hubo un error: " . $e->getMessage());
@@ -71,13 +59,6 @@ if (isset($_POST['submit'])) {
     }
 
 }
-// var_dump($resultado);
-// var_dump($resultado2);
-// if ($resultado->result===) {
-// }
-
-
-
 
 ?>
 

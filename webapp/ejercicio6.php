@@ -7,50 +7,55 @@ $wsdl = 'http://localhost/dwes05/soapserver/tarea05.wsdl';
 $client = new SoapClient($wsdl);
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
+if(isset($_POST['submit']) || isset($_GET['id'])) {
 
-    $id = trim(filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT));
+    if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
 
-} elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idProducto'])) {
-    # code...
+        $id = trim(filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT));
 
-    $id = trim(filter_input(INPUT_POST, 'idProducto', FILTER_VALIDATE_INT));
-    // var_dump($id);
-}
+    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idProducto'])) {
+        # code...
 
-    if (!$id) {
-
-        $error = "El ID debe de ser un numero entero mayor a 0";
-
-    } else {
-
-        try {
-            $resultado = $client->eliminarProducto($id);
-
-        } catch (\SoapFault $e) {
-            //throw $th;
-            throw new SoapFault($e->getCode(), $e->getMessage());
-        }
-
-        if ($resultado->result === 1) {
-
-            $success = true;
-
-        }
-
-        if ($resultado->result <= 0) {
-
-            $error = $resultado->descResult;
-        }
-
+        $id = trim(filter_input(INPUT_POST, 'idProducto', FILTER_VALIDATE_INT));
+        // var_dump($id);
     }
 
+        if (!$id) {
+
+            $error = "El ID debe de ser un numero entero mayor a 0";
+
+        } else {
+
+            try {
+                $resultado = $client->eliminarProducto($id);
+
+            } catch (\SoapFault $e) {
+                //throw $th;
+                throw new SoapFault($e->getCode(), $e->getMessage());
+            }
+
+            if ($resultado->result === 1) {
+
+                $success = true;
+
+            }
+
+            if ($resultado->result <= 0) {
+
+                $error = $resultado->descResult;
+            }
+
+        }
+}
+
+
+// var_dump($id);
 var_dump($_POST);
 var_dump($_GET);
-var_dump($_SERVER['REQUEST_METHOD']);
-var_dump($resultado);
-var_dump($error);
-var_dump($success);
+// var_dump($_SERVER['REQUEST_METHOD']);
+// var_dump($resultado);
+// var_dump($error);
+// var_dump($success);
 
 ?>
 

@@ -1,6 +1,7 @@
 form {
     display: flex !important;
     flex-direction: column;
+    margin: 0 0 !important;
 }
 
 
@@ -12,7 +13,6 @@ form {
 .lista-producto {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 0.9rem;
 }
 
@@ -34,11 +34,6 @@ form {
     justify-content: center;
 }
 
-.lista-producto li span
-{
-
-}
-
 body > div > div > div > button > a {
     all: unset;
 }
@@ -47,3 +42,17 @@ body > div > div > div > button > a {
     display: flex;
     justify-content: center;
 }
+
+body > div > div > div > form > div > button > a {
+    all: unset;
+    color: red;
+}
+body > div > div > div > div > button > a {
+    all: unset;
+}
+
+body > div > div > ul > li > span {
+    text-align: right;
+}
+
+

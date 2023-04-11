@@ -11,6 +11,10 @@ body {
   font-weight: 100;
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
 .container {
   width: 80% !important;
 }

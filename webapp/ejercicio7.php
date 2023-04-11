@@ -8,6 +8,10 @@ $client = new SoapClient($wsdl);
 try {
 
    $resultado = $client->listarProductos();
+
+   if($resultado === null) {
+    $error = "No hay ningun producto en la base de datos";
+   }
 //    var_dump($resultado);
 
 } catch (\SoapFault $e) {
@@ -36,7 +40,7 @@ try {
         <?php if (isset($error)) { ?>
             <div class="campo campo-resultado">
                 <h3 class="titulo-producto error">
-                    Error Cargando la lista de productos: <?= $error ?>
+                    <?= $error ?>
                 </h3>
                 <div class="campo volver">
                     <button type="submit" value="submit" class="btn btn-nuevo w20" name="submit"><a class="enlace"
@@ -80,10 +84,7 @@ try {
             <?php } ?>
         </tbody>
     </table>
-
-
             <?php } ?>
-
     </div>
 </body>
 
